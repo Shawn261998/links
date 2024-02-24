@@ -60,7 +60,7 @@ let renderBlock = (block) => {
 				<figure> 
 					<img src="${ block.image.original.url }" alt ="by ${ block.author}"> 
 					<figcaption> ${ block.title }</figcaption> 
-				</figure> 
+					</figure> 
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend',imageItem)
