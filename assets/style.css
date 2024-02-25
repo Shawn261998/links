@@ -280,3 +280,11 @@ h3 {
 	position: relative;
 	top: 2px;
    }
+
+.block--image__description {
+	display: none;
+}
+
+.block--image:active .block--image__description  { 
+	display: block;
+}

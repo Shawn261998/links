@@ -47,12 +47,12 @@ let renderBlock = (block) => {
 				<p><a href="${ block.source.url }">See the original ↗</a></p>
 			</li>
 			`
-		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
+			let linkBlocks = document.getElementById('block--link')
+			linkBlocks.insertAdjacentHTML('beforeend', linkItem)
 	}
 
 	// Images!
 	else if (block.class == 'Image') {
-		console.log(block)
 		let imageItem =
 			`
 			<li class="block block--image">
@@ -61,23 +61,30 @@ let renderBlock = (block) => {
 					<img src="${ block.image.original.url }" alt ="by ${ block.author}"> 
 					<figcaption> ${ block.title }</figcaption> 
 					</figure> 
+					<div  class="block--image__description"> 
+					${block.description_html
+					}</div>
+					<button id="example">showmore!</button>
 			</li>
 			`
-		channelBlocks.insertAdjacentHTML('beforeend',imageItem)
+
+			let imageBlocks = document.getElementById('block--image')
+			imageBlocks.insertAdjacentHTML('beforeend', imageItem)
 	}
 
-	// // Text!
-	// else if (block.class == 'Text') {
-	// 	console.log(block)
-	
-	// 	let textItem= 
-	// 	`
-	// 	<li class= "block  block--text">
-	// 	${ }
-	// 	</li>
-	// 	`
-	// 	channelBlocks.insertAdjacentHTML('beforeend',textItem)
-	// }
+	// Text!
+	else if (block.class == 'Text') {
+		let textItem= 
+		`
+		<ul class="block block--text"> 
+		<div class="text_block_title"> ${block.generated_title}</div> 
+		${block.content_html}
+		<ul> 
+		`
+		let textBlocks = document.getElementById('block--text')
+		textBlocks.insertAdjacentHTML('beforeend', textItem)
+		
+	}
 
 	// Uploaded (not linked) media…
 	else if (block.class == 'Attachment') {
@@ -88,12 +95,14 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
+				<li class="block block--video>
 					<p><em>Video</em></p>
+					<div class="title"> ${block.generated_title}</div>
 					<video controls src="${ block.attachment.url }"></video>
 				</li>
 				`
-			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
+			let videoBlocks = document.getElementById('block--video')
+			videoBlocks.insertAdjacentHTML('beforeend', videoItem)
 			// More on video, like the `autoplay` attribute:
 			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
 		}
@@ -128,6 +137,7 @@ let renderBlock = (block) => {
 			let linkedVideoItem =
 				`
 				<li>
+				<div class="title"> ${block.generated_title}</div>
 					<p><em>Linked Video</em></p>
 					${ block.embed.html }
 				</li>
@@ -138,7 +148,15 @@ let renderBlock = (block) => {
 
 		// Linked audio!
 		else if (embed.includes('rich')) {
-			// …up to you!
+			let linkedAudioItem =
+				`
+				<li>
+				<div class="title"> ${block.generated_title}</div>
+					<p><em>Linked Audio</em></p>
+					${ block.embed.html }
+				</li>
+				`
+			channelBlocks.insertAdjacentHTML('beforeend', linkedAudioItem)
 		}
 	}
 }
@@ -164,7 +182,7 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
 	.then((response) => response.json()) // Return it as JSON data
 	.then((data) => { // Do stuff with the data
-		console.log(data) // Always good to check your response!
+		// console.log(data) // Always good to check your response!
 		placeChannelInfo(data) // Pass the data to the first function
 
 
@@ -178,5 +196,13 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		let channelUsers = document.getElementById('channel-users') // Show them together
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers)
+
+		let switchButton = document.querySelector('.block--image__description button')
+		switchButton.forEach((switchButton) => {
+			switchButton.onclick = () => { // Attach the event.
+				switchButton.parentElement.classList.toggle(active)
+			}
+		})
+
 	})
 
