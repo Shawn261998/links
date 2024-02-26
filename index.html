@@ -8,41 +8,72 @@
 	</head>
 
     <body>
-<!-- top header -->
-        <header> 
 
-            <nav>
+        <section class=" mainnav"> 
+            <nav class="keyboard"> 
+                <div class="key-orange">
+                <button class="key-inside-org"> All</button>
+                </div>
+                <div class="key-beige">
+                    <button class="key-inside"> Images</button>
+                </div>
+                <div class="key-beige">
+                    <button class="key-inside"> Links</button>
+                </div>
+                <div class="key-beige">
+                    <button class="key-inside"> Videos</button>
+                </div>
+                <div class="key-beige">
+                    <button class="key-inside"> Audio</button>
+                </div>
+                <div class="key-beige">
+                    <button class="key-inside"> Quotes</button>
+                </div>
+            </nav>
+        </section>
+
+    <header> 
+
+<!-- top nav -->
+
+<!-- header banner with page title and discription  -->
+
+        <section class="header"> 
+            <nav class="topnav">
                 <img class="logo_img" src="assets/images/Logo_Arena.png">
                 <p> Typography & Interaction</p>
             </nav>
 
-            <div class="banner_grid">
-                <div class="left_banner">
+            <div class="bannerGrid">
+                <div class="leftBanner">
                     <h1 id="channel-title"></h1>
                     <p class="description" id="channel-description"></p>
-                    <button class="author_button"> Shaurya Mehta </button> 
-                    <button class="author_button"> JC Clark </button>
+                    <!-- <button class="author_button"> Shaurya Mehta </button> 
+                    <button class="author_button"> JC Clark </button> -->
                  </div>
-        </header>
-
-        <section> 
-            <nav> 
-                <button> 
-                    
-                </button>
-            </nav>
+                 <div class="rightBanner">
+                 </div>
         </section>
+
+    </header>
+
 
         <!-- blocks -->
-        <section class="container">
-            <ul class="block--link" id="block--link"></ul>
-            <ul class="block--image" id="block--image"></ul>
-            <ul class="block--text" id="block--text"></ul>
-            <ul class="block--video" id="block--video"></ul>
-            <ul class="channel-blocks" id="channel-blocks">
-            </ul> 
+        <section class="container-images">
+            <ul class="images-block" id="block--image"></ul>
         </section>
-
+        <section class="container-links">
+            <ul class="links-block" id="block--link"></ul>
+        </section>
+        <section class="container-texts">
+            <ul class="block--text" id="block--text"></ul>
+        </section>
+        <section class="container-videos">
+            <ul class="block--video" id="block--video"></ul>
+        </section>
+        <section class="container">
+            <ul class="channel-blocks" id="channel-blocks"></ul> 
+        </section>
     </body> 
     <footer> 
         <p> Typography & Interaction</p>

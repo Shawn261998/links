@@ -36,15 +36,14 @@ let renderBlock = (block) => {
 		let linkItem =
 			`
 			<li class="block block--link">
-				<p><em>Link</em></p>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
 				</picture>
-				<h3>${ block.title }</h3>
-				${ block.description_html }
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
+				<h3 class="link-title">${ block.title }</h3>
+				<div class="link-description">${ block.description_html }</div>
+				<div class="link-button"><p><a href="${ block.source.url }"> Read original </a></p></div>
 			</li>
 			`
 			let linkBlocks = document.getElementById('block--link')
@@ -56,15 +55,13 @@ let renderBlock = (block) => {
 		let imageItem =
 			`
 			<li class="block block--image">
-				<p><em>Image</em></p>
 				<figure> 
-					<img src="${ block.image.original.url }" alt ="by ${ block.author}"> 
+						<img src="${ block.image.original.url }" alt ="by ${ block.author}">
+					</div> 
 					<figcaption> ${ block.title }</figcaption> 
-					</figure> 
 					<div  class="block--image__description"> 
 					${block.description_html
 					}</div>
-					<button id="example">showmore!</button>
 			</li>
 			`
 
