@@ -104,7 +104,7 @@ h1{
 .mainnav{ 
 	display: block;
 	position: sticky;
-	top: 0; 
+	top: var(--spacing); 
 	float: left;
 	justify-content: center;
 	height: 800px;
@@ -214,7 +214,8 @@ figcaption {
 
 
 .container-links{ 
-	columns: 2 ;
+	display: grid;
+	flex-direction: column;
     background-color: var(--black);
     margin: calc(1* var(--spacing)) ;
     padding: calc(4* var(--spacing)) ;
@@ -250,6 +251,15 @@ figcaption {
 .link-button{ 
 
 }
+
+.container-texts{ 
+	columns: 2 ;
+    background-color: var(--black);
+    margin: calc(1* var(--spacing)) ;
+    padding: calc(4* var(--spacing)) ;
+    border-radius: calc(1* var(--border-radius)) ;
+}
+
 
 .blocks { 
 	display: grid;
