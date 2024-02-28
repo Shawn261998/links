@@ -22,6 +22,7 @@ let placeChannelInfo = (data) => {
 	channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
 	// channelCount.innerHTML = data.length
 	// channelLink.href = `https://www.are.na/channel/${channelSlug}`
+
 }
 
 
@@ -43,7 +44,7 @@ let renderBlock = (block) => {
 				</picture>
 				<h3 class="link-title">${ block.title }</h3>
 				<div class="link-description">${ block.description_html }</div>
-				<div class="link-button"><p><a href="${ block.source.url }"> Read original </a></p></div>
+				<div class="link-button"><button><a href="${ block.source.url }"> Read original </a></button></div>
 			</li>
 			`
 			let linkBlocks = document.getElementById('block--link')
@@ -74,8 +75,14 @@ let renderBlock = (block) => {
 		let textItem= 
 		`
 		<ul class="block block--text"> 
-		<div class="text_block_title"> ${block.generated_title}</div> 
-		${block.content_html}
+				<div class="outershell">
+					<div class="display"> 
+						<div class="text_block_title"> ${block.generated_title}
+						</div> 
+						<p class="text-content">${block.content_html}</p>
+					</div> 	
+					<div class="appleLogo"> <img src="assets/images/Apple logo.png" alt="" </div>  
+				</div> 
 		<ul> 
 		`
 		let textBlocks = document.getElementById('block--text')
@@ -92,10 +99,9 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li class="block block--video>
-					<p><em>Video</em></p>
-					<div class="title"> ${block.generated_title}</div>
-					<video controls src="${ block.attachment.url }"></video>
+				<li class="block block--video">
+					<video class="thumbnail-video" controls src="${ block.attachment.url }"></video>
+					<div class="title-video"> ${block.generated_title}</div>
 				</li>
 				`
 			let videoBlocks = document.getElementById('block--video')
@@ -111,15 +117,17 @@ let renderBlock = (block) => {
 
 		// Uploaded audio!
 		else if (attachment.includes('audio')) {
+			console.log(block)
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li>
-					<p><em>Audio</em></p>
-					<audio controls src="${ block.attachment.url }"></video>
+				<li class="block block--audio">
+				<p class="audio-title">${block.generated_title}</p> 
+					<audio class="audio-player" controls src="${ block.attachment.url }"></video>
 				</li>
 				`
-			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
+			let audioBlocks = document.getElementById('block--audio')
+			audioBlocks.insertAdjacentHTML('beforeend', audioItem)
 			// More on audio: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
 		}
 	}
@@ -130,16 +138,21 @@ let renderBlock = (block) => {
 
 		// Linked video!
 		if (embed.includes('video')) {
+			console.log(block)
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li>
-				<div class="title"> ${block.generated_title}</div>
-					<p><em>Linked Video</em></p>
-					${ block.embed.html }
+				<li class="block block--video--embed">
+					<div class="title-video-embed"> 
+						${block.generated_title}
+					</div>
+					<div class="thumbnail-video-embed">
+						${ block.embed.html }
+					</div>
 				</li>
 				`
-			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
+			let linkedVideoblocks = document.getElementById('block--video--embed')
+			linkedVideoblocks.insertAdjacentHTML('beforeend', linkedVideoItem)
 			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
 		}
 
@@ -149,7 +162,6 @@ let renderBlock = (block) => {
 				`
 				<li>
 				<div class="title"> ${block.generated_title}</div>
-					<p><em>Linked Audio</em></p>
 					${ block.embed.html }
 				</li>
 				`
@@ -164,9 +176,9 @@ let renderBlock = (block) => {
 let renderUser = (user, container) => { // You can have multiple arguments for a function!
 	let userAddress =
 		`
-		<address>
+		<address class="authors">
 			<img src="${ user.avatar_image.display }">
-			<h3>${ user.first_name }</h3>
+			<h3 class="users">${ user.first_name }</h3>
 			<p><a href="https://are.na/${ user.slug }">Are.na profile ↗</a></p>
 		</address>
 		`
@@ -194,12 +206,28 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers)
 
-		let switchButton = document.querySelector('.block--image__description button')
-		switchButton.forEach((switchButton) => {
-			switchButton.onclick = () => { // Attach the event.
+		let switchButtons = document.querySelector('.block--image button')
+		switchButtons.forEach((switchButton) => {
+			switchButton.onclick = () => { 
 				switchButton.parentElement.classList.toggle(active)
 			}
 		})
 
 	})
 
+        let a;
+        let time;
+        setInterval(() => {
+          a = new Date();
+          time = a.getHours() + ':' + a.getMinutes();
+          document.getElementById('clock').innerHTML = time;
+        }, 1000);
+
+		const audio = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+		const buttons = document.querySelectorAll("button");
+
+		buttons.forEach(button => {
+		button.addEventListener("click", () => {
+			audio.play();
+		});
+		});

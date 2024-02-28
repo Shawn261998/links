@@ -7,76 +7,122 @@
 		<script defer src="assets/arena.js"></script>
 	</head>
 
-    <body>
-
-        <section class=" mainnav"> 
-            <nav class="keyboard"> 
-                <div class="key-orange">
-                <button class="key-inside-org"> All</button>
+        <body>
+                
+                <div class="virtual"> 
+                    <section class=" mainnav"> 
+                        <nav class="keyboard"> 
+                            <ul><img class="logo_img" href="https://www.are.na/jc-clark/physical-touchpoints" src="assets/images/Logo_Arena.png"></ul>
+                            <ul class="key-beige">
+                                <a href="#link-text"></ahref><button class="key-inside"> Text</button>
+                                </a>
+                            </ul>
+                            <ul class="key-beige">
+                                <a  href="#link-images" > <button class="key-inside"> Images</button>
+                                </a>
+                                </ul>
+                            <ul class="key-beige">
+                                <a href="#link-links" ><button class="key-inside"> Links</button>
+                                </a> 
+                            </ul>
+                            <ul class="key-beige">
+                                <a href="#link-audios"><button class="key-inside"> Audio</button>
+                                </a> 
+                            </ul>
+                            <ul class="key-beige">
+                                <a href="#link-videos" ><button class="key-inside">  Videos</button>
+                                </a> 
+                            </ul>
+                            <ul class="key-beige">
+                                <a href="#authors" ><button class="key-inside"> Authors</button>
+                                </a> 
+                            </ul>
+                            <div class="screen"> 
+                                <div class="clock" id="clock"></div>
+                                <div class="gif"> </div>
+                            </div>
+                        </nav>
+                    </section>
                 </div>
-                <div class="key-beige">
-                    <button class="key-inside"> Images</button>
-                </div>
-                <div class="key-beige">
-                    <button class="key-inside"> Links</button>
-                </div>
-                <div class="key-beige">
-                    <button class="key-inside"> Videos</button>
-                </div>
-                <div class="key-beige">
-                    <button class="key-inside"> Audio</button>
-                </div>
-                <div class="key-beige">
-                    <button class="key-inside"> Quotes</button>
-                </div>
-            </nav>
-        </section>
+            <header> 
 
-    <header> 
+        <!-- top nav -->
 
-<!-- top nav -->
+        <!-- header banner with page title and discription  -->
 
-<!-- header banner with page title and discription  -->
+                <section id="link-about" class="header"> 
+                    <div class="bannerGrid">
+                        <div class="leftBanner">
+                            <p class="subject"> Typography & Interaction</p>
+                            <aside><p class="description" id="channel-description"></p></aside>
+                            <div> 
+                            <h1 id="channel-title"></h1>
+                                <div class="logos">
+                                    <div class="logos-slide">
+                                      <p class="collaborators"> Micheal Farenbach ✶</p>
+                                      <p class="collaborators">  Eric Li ✶ </p>
+                                      <p class="collaborators">  JC Clark ✶ </p>
+                                      <p class="collaborators"> Coding with Robby ✶</p>
+                                      <p class="collaborators"> Code Grid ✶</p>
+                                      <p class="collaborators"> Utkan Dora Öncül ✶</p>
+                                      <p class="collaborators"> Marius Watz ✶</p>
+                                      <p class="collaborators"> Madison Beckerman ✶</p>
+                                      <p class="collaborators"> Jevgen  Zymbalevśkyj ✶</p>
+                                      <p class="collaborators">Csaba Osvath ✶</p>
+                                      <p class="collaborators">  Simran Thind ✶</p>
+                                      <p class="collaborators"> J. G. ✶</p>
+                                      <p class="collaborators"> Micheal Farenbach ✶</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rightBanner">
+                            <div class="carousel"> 
+                                <div class="slide">
+                                    <img src="/assets/images/GIF-2.gif" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </header>
 
-        <section class="header"> 
-            <nav class="topnav">
-                <img class="logo_img" src="assets/images/Logo_Arena.png">
-                <p> Typography & Interaction</p>
-            </nav>
-
-            <div class="bannerGrid">
-                <div class="leftBanner">
-                    <h1 id="channel-title"></h1>
-                    <p class="description" id="channel-description"></p>
-                    <!-- <button class="author_button"> Shaurya Mehta </button> 
-                    <button class="author_button"> JC Clark </button> -->
-                 </div>
-                 <div class="rightBanner">
-                 </div>
-        </section>
-
-    </header>
-
-
+            <main>  
         <!-- blocks -->
-        <section class="container-images">
-            <ul class="images-block" id="block--image"></ul>
-        </section>
-        <section class="container-links">
-            <ul class="links-block" id="block--link"></ul>
-        </section>
-        <section class="container-texts">
-            <ul class="texts-block" id="block--text"></ul>
-        </section>
-        <section class="container-videos">
-            <ul class="videos-block" id="block--video"></ul>
-        </section>
-        <section class="container">
-            <ul class="channel-blocks" id="channel-blocks"></ul> 
-        </section>
-    </body> 
-    <footer> 
-        <p> Typography & Interaction</p>
-        <p> Shaurya Mehta</p>
-    </footer>
+                <section class="container-texts" id="link-text">
+                    <ul class="texts-block" id="block--text"></ul>
+                </section>
+                <section class="container-images" id="link-images">
+                    <div class="images-block"> 
+                    <ul id="block--image"></ul>
+                    </div>
+                </section>
+                <section class="container-links" id="link-links">
+                    <div class="links-block"> 
+                    <ul id="block--link"></ul>
+                    </div>
+                </section>
+                <section class="container-audio" id="link-audios">
+                    <div class="audio-block"> 
+                    <ul id="block--audio"></ul>
+                    </div>
+                </section>
+                <section class="container-videos" id="link-videos">
+                    <div class="videos-block"> 
+                    <ul id="block--video"></ul>
+                    </div>
+                </section>
+                <section class="container-video-embed" id="link-videos">
+                    <div class="video-embded-block"> 
+                    <ul id="block--video--embed"></ul>
+                    </div>
+                </section>
+                <section class="container-blocks" id="link-5">
+                    <ul class="channel-blocks" id="channel-blocks"></ul> 
+                </section>
+            </main>
+        </body> 
+        <footer id="authors"> 
+            <div class="users" id="channel-users"></div>
+        </footer>
 </html>
