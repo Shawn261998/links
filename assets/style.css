@@ -264,7 +264,7 @@ aside {
 }
 .screen { 
 	width: 100%;
-	background-image: url(assets/images/keyboard.gif) ;
+	background-image: url(/assets/images/keyboard.gif) ;
 	border: var(--beige-circel) solid 2px;
 	border-radius: calc(1.5* var(--border-radius)) ;
 	height: 15rem;
